@@ -1,4 +1,5 @@
 
+import 'package:bhavintailors/Pages/carousel_view_page.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
@@ -39,12 +40,15 @@ class _SimpleBlouseState extends State<SimpleBlouse> {
       scrollDirection: Axis.vertical,
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
       itemBuilder: (BuildContext context,int index){
-         return Card(
-           child: Image(
-             image: NetworkImage(snapshot.data.documents[index].data['front'],
-             scale: 5,
+         return GestureDetector(
+           child: Card(
+             child: Image(
+               image: NetworkImage(snapshot.data.documents[index].data['front'],
+               scale: 5,
+               ),
              ),
            ),
+           onTap:()=>Navigator.push(context, MaterialPageRoute(builder:(context)=> careouselView(front: [snapshot.data.documents[index].data['front'],snapshot.data.documents[index].data['back']].toList(),))),
          );
       },
     );
