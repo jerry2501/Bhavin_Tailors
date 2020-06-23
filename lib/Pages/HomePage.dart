@@ -1,6 +1,7 @@
 
 import 'package:bhavintailors/Pages/navigation_drawer.dart';
 import 'package:bhavintailors/Services/auth.dart';
+import 'package:bhavintailors/blouse/simple_blouse.dart';
 import 'package:bhavintailors/common_widgets/platform_alert_dialog.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -37,21 +38,39 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Bhavin Tailors',style: TextStyle(fontFamily: 'CrimsonText',fontSize: 22),),
-        centerTitle: true,
-        actions: <Widget>[
-          IconButton(
-           icon: Icon(Icons.power_settings_new,color: Colors.white,),
-            onPressed: (){
-              _confirmSignOut(context);
-            },
+    return DefaultTabController(
+      length: 3,
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text('Bhavin Tailors',style: TextStyle(fontFamily: 'CrimsonText',fontSize: 22),),
+          centerTitle: true,
+          bottom: TabBar(
+            unselectedLabelStyle: TextStyle(fontFamily: 'SourceProText'),
+            tabs: <Widget>[
+              Tab(text: "Simple",),
+              Tab(text: "Linen Blouse",),
+              Tab(text: "Designer Blouse",),
+            ],
           ),
-        ],
+          actions: <Widget>[
+            IconButton(
+             icon: Icon(Icons.power_settings_new,color: Colors.white,),
+              onPressed: (){
+                _confirmSignOut(context);
+              },
+            ),
+          ],
 
+        ),
+        drawer: NavigationDrawer.create(context),
+        body:TabBarView(
+          children: <Widget>[
+              SimpleBlouse(),
+            SimpleBlouse(),
+            SimpleBlouse(),
+          ],
+        ),
       ),
-      drawer: NavigationDrawer.create(context),
     );
   }
 }

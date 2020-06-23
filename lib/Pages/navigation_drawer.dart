@@ -3,7 +3,6 @@ import 'package:bhavintailors/Services/auth.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class NavigationDrawer extends StatefulWidget {
  drawerBloc bloc;
