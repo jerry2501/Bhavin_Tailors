@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "979958985127",
+    "firebase_url": "https://bhavin-tailors.firebaseio.com",
+    "project_id": "bhavin-tailors",
+    "storage_bucket": "bhavin-tailors.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:979958985127:android:f30c424c2232941cb04682",
+        "android_client_info": {
+          "package_name": "com.jerry.bhavintailors"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "979958985127-2q0vci37ha2j7cr4s34o74f6pggbpc03.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.jerry.bhavintailors",
+            "certificate_hash": "684d6ea67c709299bff49cd46f606aa2065ce113"
+          }
+        },
+        {
+          "client_id": "979958985127-o96gssmmt337a8jpccdd7rp8sib3v9fj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDtobFAgnkHTPUxAuT4Ze011EMxJj_eUXk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "979958985127-o96gssmmt337a8jpccdd7rp8sib3v9fj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
