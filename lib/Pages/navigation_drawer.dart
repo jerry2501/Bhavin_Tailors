@@ -1,4 +1,6 @@
+import 'package:bhavintailors/Pages/address_page.dart';
 import 'package:bhavintailors/Pages/drawerBloc.dart';
+import 'package:bhavintailors/Pages/suggestion_page.dart';
 import 'package:bhavintailors/Services/auth.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -67,12 +69,16 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
         ),
         Divider(thickness: 2,),
         ListTile(
-          leading: Icon(Icons.favorite,color: Colors.red,),
-          title: Text('Favourites',style: TextStyle(fontFamily: 'CrimsonText',fontSize: 18),),
-        ),
-        ListTile(
           leading: Icon(Icons.contacts,color: Colors.red,),
           title: Text('Address & Contact',style: TextStyle(fontFamily: 'CrimsonText',fontSize: 18),),
+          onTap:()=> Navigator.push(context, MaterialPageRoute(builder:(context)=>AddressPage() )),
+        ),
+        ListTile(
+          leading: Icon(Icons.speaker_notes,color: Colors.red,),
+          title: Text('Suggestions',style: TextStyle(fontFamily: 'CrimsonText',fontSize: 18),),
+          onTap: (){
+            Navigator.push(context, MaterialPageRoute(builder:(context)=>SuggestionPage() ));
+          },
         ),
         Divider(thickness: 2,),
         ListTile(
