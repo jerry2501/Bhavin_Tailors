@@ -1,3 +1,4 @@
+import 'package:bhavintailors/Pages/HomePage.dart';
 import 'package:bhavintailors/Pages/address_page.dart';
 import 'package:bhavintailors/Pages/drawerBloc.dart';
 import 'package:bhavintailors/Pages/suggestion_page.dart';
@@ -61,6 +62,7 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
           leading: Icon(Icons.dashboard,color: Colors.red,),
           title: Text('Blouse',style: TextStyle(fontFamily: 'CrimsonText',fontSize: 18),),
           subtitle: Text('All types',style: TextStyle(fontFamily:'SourceSansPro' ),),
+          onTap:()=> Navigator.push(context, MaterialPageRoute(builder:(context)=>HomePage())),
         ),
         ListTile(
           leading: Icon(Icons.dashboard,color: Colors.red,),
