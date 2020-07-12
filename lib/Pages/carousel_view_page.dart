@@ -1,7 +1,8 @@
 
 import 'package:bhavintailors/Pages/zoom_view.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class careouselView extends StatefulWidget {
@@ -44,9 +45,14 @@ class _careouselViewState extends State<careouselView> {
                       width: MediaQuery.of(context).size.width,
                       margin: EdgeInsets.symmetric(horizontal: 10.0),
                       decoration: BoxDecoration(
-                        color: Colors.red
+                        color: Colors.white,
+                        border: Border.all(color: Colors.red,style: BorderStyle.solid)
                       ),
-                      child: GestureDetector(child: Image.network(imgUrl,fit: BoxFit.fill,),
+                      child: GestureDetector(child: CachedNetworkImage(imageUrl:imgUrl,
+                        fit: BoxFit.fitWidth,
+                        placeholder: (context,url)=>CircularProgressIndicator(),
+                        errorWidget: (context,url,error)=>Icon(Icons.error,color: Colors.red,),
+                      ),
                       onTap: (){
                         Navigator.push(context, MaterialPageRoute(builder:(context)=> zoomView(imgUrl: imgUrl,)));
                       },
@@ -71,6 +77,15 @@ class _careouselViewState extends State<careouselView> {
                 );
               }),
             ),
+             Row(
+
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Icon(Icons.touch_app,color: Colors.grey,),
+                  SizedBox(width: 10,),
+                  Text('Tap on Image to Zoom',style: TextStyle(fontFamily: 'CrimsonText',color: Colors.grey,fontSize: 16),),
+                ],
+              ),
           ],
         ),
       ),

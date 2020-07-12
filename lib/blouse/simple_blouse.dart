@@ -1,8 +1,8 @@
 
 import 'package:bhavintailors/Pages/carousel_view_page.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:like_button/like_button.dart';
 
@@ -77,6 +77,15 @@ class _SimpleBlouseState extends State<SimpleBlouse> {
              child: Stack(
 
                children: <Widget>[
+                     SizedBox(height: 20,),
+                     Align(
+                       alignment: Alignment.center,
+                       child: CachedNetworkImage(imageUrl:snapshot.data.documents[index].data['front'],
+                         fit: BoxFit.fill,
+                         progressIndicatorBuilder: (context,url,progress)=>CircularProgressIndicator(value: progress.progress,),
+                         errorWidget: (context,url,error)=>Icon(Icons.error,color: Colors.red,),
+                       ),
+                     ),
                  Positioned(
                    right: 0,
                    child: LikeButton(
@@ -87,15 +96,6 @@ class _SimpleBlouseState extends State<SimpleBlouse> {
                      onTap:(isLiked) => onLikeTapped(isLiked,snapshot.data.documents[index]),
                    ),
                  ),
-                     SizedBox(height: 30,),
-                     Align(
-                       alignment: Alignment.center,
-                       child: Image(
-                             image: NetworkImage(snapshot.data.documents[index].data['front'],
-                             scale: 7,
-                             ),
-                           ),
-                     ),
                    Positioned(
                        bottom: 0,
                        child:  Container(

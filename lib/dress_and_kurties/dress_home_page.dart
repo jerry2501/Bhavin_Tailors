@@ -1,22 +1,20 @@
 
 import 'package:bhavintailors/Pages/navigation_drawer.dart';
 import 'package:bhavintailors/Services/auth.dart';
-import 'package:bhavintailors/Services/marquee_widget.dart';
-import 'package:bhavintailors/blouse/designer_blouse.dart';
-import 'package:bhavintailors/blouse/linen_blouse.dart';
-import 'package:bhavintailors/blouse/simple_blouse.dart';
 import 'package:bhavintailors/common_widgets/platform_alert_dialog.dart';
+import 'package:bhavintailors/dress_and_kurties/chudidar_dress.dart';
+import 'package:bhavintailors/dress_and_kurties/kurties_with_tousers.dart';
+import 'package:bhavintailors/dress_and_kurties/punjabi_dress.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class HomePage extends StatefulWidget {
+class DressHomePage extends StatefulWidget {
 
   @override
-  _HomePageState createState() => _HomePageState();
+  _DressHomePageState createState() => _DressHomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
-  final key = new GlobalKey<ScaffoldState>();
+class _DressHomePageState extends State<DressHomePage> {
   Future<void> _signOut(BuildContext context) async{
     try {
       final auth=Provider.of<AuthBase>(context);
@@ -45,19 +43,19 @@ class _HomePageState extends State<HomePage> {
       length: 3,
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Bhavin Tailors',style: TextStyle(fontFamily: 'CrimsonText',fontSize: 22),),
+          title: Text('Dress & Kurties',style: TextStyle(fontFamily: 'CrimsonText',fontSize: 22),),
           centerTitle: true,
           bottom: TabBar(
             unselectedLabelStyle: TextStyle(fontFamily: 'SourceProText'),
             tabs: <Widget>[
-              Tab(text: "Simple",),
-              Tab(text: "Linen Blouse",),
-              Tab(text: "Designer",),
+              Tab(text: "Punjabi",),
+              Tab(text: "Chudidar",),
+              Tab(text: "Kurti With Trousers",),
             ],
           ),
           actions: <Widget>[
             IconButton(
-             icon: Icon(Icons.power_settings_new,color: Colors.white,),
+              icon: Icon(Icons.power_settings_new,color: Colors.white,),
               onPressed: (){
                 _confirmSignOut(context);
               },
@@ -68,9 +66,9 @@ class _HomePageState extends State<HomePage> {
         drawer: NavigationDrawer.create(context),
         body:TabBarView(
           children: <Widget>[
-              SimpleBlouse(),
-            LinenBlouse(),
-            DesignerBlouse(),
+            PunjabiDress(),
+            ChudidarDress(),
+            KurtiWithTrousers(),
           ],
         ),
       ),

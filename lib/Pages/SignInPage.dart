@@ -61,7 +61,7 @@ class SignInPage extends StatelessWidget {
                   begin: Alignment.bottomCenter,
                   end: Alignment.topCenter,
                   stops: [0.1,1],
-                  colors: [Colors.red[400],Colors.white]
+                  colors: [Colors.red[400],Colors.white],
               )
           ),
         ),
