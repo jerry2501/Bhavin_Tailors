@@ -10,6 +10,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+  static final navigatorKey = new GlobalKey<NavigatorState>();
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -23,6 +24,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           primaryColor: Color.fromRGBO(255, 26, 26, 1),
+          primarySwatch: Colors.red,
         ),
         home: LandingPage(),
       ),

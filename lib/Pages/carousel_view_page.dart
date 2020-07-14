@@ -49,8 +49,7 @@ class _careouselViewState extends State<careouselView> {
                         border: Border.all(color: Colors.red,style: BorderStyle.solid)
                       ),
                       child: GestureDetector(child: CachedNetworkImage(imageUrl:imgUrl,
-                        fit: BoxFit.fitWidth,
-                        placeholder: (context,url)=>CircularProgressIndicator(),
+                        fit: BoxFit.contain,
                         errorWidget: (context,url,error)=>Icon(Icons.error,color: Colors.red,),
                       ),
                       onTap: (){

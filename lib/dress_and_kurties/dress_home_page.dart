@@ -48,9 +48,10 @@ class _DressHomePageState extends State<DressHomePage> {
           bottom: TabBar(
             unselectedLabelStyle: TextStyle(fontFamily: 'SourceProText'),
             tabs: <Widget>[
+              Tab(text: "Kurties",),
               Tab(text: "Punjabi",),
               Tab(text: "Chudidar",),
-              Tab(text: "Kurti With Trousers",),
+
             ],
           ),
           actions: <Widget>[
@@ -66,9 +67,10 @@ class _DressHomePageState extends State<DressHomePage> {
         drawer: NavigationDrawer.create(context),
         body:TabBarView(
           children: <Widget>[
+            KurtiWithTrousers(),
             PunjabiDress(),
             ChudidarDress(),
-            KurtiWithTrousers(),
+
           ],
         ),
       ),

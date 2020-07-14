@@ -4,6 +4,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class AddressPage extends StatefulWidget {
   @override
@@ -11,7 +12,7 @@ class AddressPage extends StatefulWidget {
 }
 
 class _AddressPageState extends State<AddressPage> {
-  var number='8488893172';
+  var number='+918488893172';
   final key = new GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
@@ -55,11 +56,11 @@ class _AddressPageState extends State<AddressPage> {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Card(
-                elevation: 5,
+                elevation: 8,
                 shadowColor: Colors.red[300],
                 child: Container(
                   width: MediaQuery.of(context).size.width,
-                  color: Colors.grey[300],
+                  color: Colors.white,
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Column(
@@ -74,22 +75,21 @@ class _AddressPageState extends State<AddressPage> {
                           Divider(thickness: 1,),
                           Text('Contact No.',style: TextStyle(color: Colors.red,fontSize: 18,fontFamily: 'CrimsonText'),),
                           SizedBox(height: 5,),
-                          Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              Icon(Icons.contacts,color: Colors.red,size: 18,),
-                              SizedBox(width: 8,),
-                              Text(number,style: TextStyle(fontFamily: 'SourceSansPro',fontSize: 18),),
-                              SizedBox(width: 10,),
-                              GestureDetector(
-                                  child: Icon(Icons.content_copy,size: 18,),
-                                onTap: (){
-                                  Clipboard.setData(new ClipboardData(text: number));
-                                  key.currentState.showSnackBar(SnackBar(content: Text('Copied to Clipboard'),));
-                                },
-                              ),
-                            ],
+                          GestureDetector(
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                Icon(Icons.contacts,color: Colors.red,size: 18,),
+                                SizedBox(width: 8,),
+                                Text(number,style: TextStyle(fontFamily: 'SourceSansPro',fontSize: 18),),
+                                SizedBox(width: 10,),
+                                 Icon(Icons.call,size: 24,color: Colors.black,),
+                              ],
+                            ),
+                            onTap: (){
+                              _makeCall();
+                            },
                           ),
                         ],
                     ),
@@ -97,7 +97,7 @@ class _AddressPageState extends State<AddressPage> {
                 ),
               ),
             ),
-            SizedBox(height: 10,),
+            SizedBox(height: 25,),
               GestureDetector(
                 child: Text('View Address On Map >',style: TextStyle(color: Colors.red,fontFamily: 'SourceSansPro',fontSize: 16),),
                 onTap: ()=>MapUtils.openMap(23.0841149,72.5911226),
@@ -105,5 +105,14 @@ class _AddressPageState extends State<AddressPage> {
           ],
         ),
     );
+  }
+
+  Future _makeCall() async{
+    if(await canLaunch('tel:$number')){
+      await launch('tel:$number');
+    }
+    else{
+      return "Could not Launch";
+    }
   }
 }

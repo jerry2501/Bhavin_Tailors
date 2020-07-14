@@ -49,8 +49,8 @@ class _ChudidarDressState extends State<ChudidarDress> {
   }
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: (state==false)?Center(child: CircularProgressIndicator(),):
+    return Scaffold(
+      body: (state==false)?Center(child: CircularProgressIndicator(),):
       StreamBuilder<QuerySnapshot>(
           stream: Firestore.instance.collection('collection').document('blouse').collection('chudidar_dress').snapshots(),
           builder: (context, snapshot) {
@@ -82,7 +82,7 @@ class _ChudidarDressState extends State<ChudidarDress> {
                   alignment: Alignment.center,
                   child:CachedNetworkImage(imageUrl:snapshot.data.documents[index].data['front'],
                     fit: BoxFit.fill,
-                    placeholder: (context,url)=>CircularProgressIndicator(),
+                    placeholder: (context,url)=>Icon(Icons.image,color: Colors.grey,),
                     errorWidget: (context,url,error)=>Icon(Icons.error,color: Colors.red,),
                   ),
                 ),

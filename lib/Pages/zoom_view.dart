@@ -9,6 +9,7 @@ class zoomView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
      body: PhotoView(
+       minScale: PhotoViewComputedScale.contained,
        imageProvider: CachedNetworkImageProvider(imgUrl,
        ),
      ),

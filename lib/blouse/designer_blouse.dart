@@ -49,8 +49,8 @@ class _DesignerBlouseState extends State<DesignerBlouse> {
   }
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: (state==false)?Center(child: CircularProgressIndicator(),):
+    return Scaffold(
+      body: (state==false)?Center(child: CircularProgressIndicator(),):
       StreamBuilder<QuerySnapshot>(
           stream: Firestore.instance.collection('collection').document('blouse').collection('designer_blouse').snapshots(),
           builder: (context, snapshot) {
@@ -82,8 +82,7 @@ class _DesignerBlouseState extends State<DesignerBlouse> {
                   alignment: Alignment.center,
                   child:CachedNetworkImage(imageUrl:snapshot.data.documents[index].data['front'],
                     fit: BoxFit.fill,
-                    progressIndicatorBuilder: (context,url,progress)=>CircularProgressIndicator(value: progress.progress,),
-//                    placeholder: (context,url)=>CircularProgressIndicator(),
+                    placeholder: (context,url)=>Icon(Icons.image,color: Colors.grey,),
                     errorWidget: (context,url,error)=>Icon(Icons.error,color: Colors.red,),
                   ),
                 ),
