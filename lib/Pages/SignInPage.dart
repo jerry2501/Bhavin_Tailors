@@ -1,5 +1,8 @@
 
 
+import 'dart:async';
+import 'dart:io';
+
 import 'package:bhavintailors/Pages/SignInBloc.dart';
 import 'package:bhavintailors/Services/auth.dart';
 import 'package:bhavintailors/common_widgets/platform_exception_alert_dialouge.dart';
@@ -8,7 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
-class SignInPage extends StatelessWidget {
+class SignInPage extends StatefulWidget {
   const SignInPage({Key key,@required this.bloc}) : super(key: key);
   final SignInBloc bloc;
 
@@ -22,6 +25,12 @@ class SignInPage extends StatelessWidget {
     );
   }
 
+  @override
+  _SignInPageState createState() => _SignInPageState();
+}
+
+class _SignInPageState extends State<SignInPage> {
+
   void _showSignInError(BuildContext context,PlatformException exception){
     PlatformExceptionAlertDialog(   //Used two dart file Platform_exception_alert_dailog and platform_alert_dailog
       title: 'Sign in failed',
@@ -31,7 +40,7 @@ class SignInPage extends StatelessWidget {
 
   Future<void> _signInWithGoogle(BuildContext context) async{
     try {
-      await bloc.signInWithGoogle();
+      await widget.bloc.signInWithGoogle();
     }on PlatformException catch(e){
       if(e.code!='ERROR_ABORTED_BY_USER'){
         _showSignInError(context, e);
@@ -39,13 +48,42 @@ class SignInPage extends StatelessWidget {
     }
   }
 
+  Future<bool> onWillPop() async {
+    return showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text('Are you sure?'),
+          content: Text('Do you want to exit an App?'),
+          actions: <Widget>[
+            FlatButton(
+              child: Text('No'),
+              onPressed: () {
+                Navigator.of(context).pop(false);
+              },
+            ),
+            FlatButton(
+              child: Text('Yes'),
+              onPressed: () {
+                exit(0);
+              },
+            )
+          ],
+        );
+      },
+    ) ?? false;
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: StreamBuilder<bool>(
-        stream: bloc.isLoadingStream,
-        initialData: false,
-        builder: (context,snapshot){ return  buildContent(context,snapshot.data);},
+    return WillPopScope(
+      onWillPop: onWillPop,
+      child: Scaffold(
+        body: StreamBuilder<bool>(
+          stream: widget.bloc.isLoadingStream,
+          initialData: false,
+          builder: (context,snapshot){ return  buildContent(context,snapshot.data);},
+        ),
       ),
     );
   }

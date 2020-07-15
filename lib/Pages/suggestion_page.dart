@@ -10,6 +10,7 @@ class SuggestionPage extends StatefulWidget {
 class _SuggestionPageState extends State<SuggestionPage> {
   final GlobalKey<FormState> formkey=GlobalKey<FormState>();
   String title,content;
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(

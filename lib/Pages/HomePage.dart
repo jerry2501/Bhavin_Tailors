@@ -26,10 +26,13 @@ class _HomePageState extends State<HomePage> {
   IOSInitializationSettings iosInitializationSettings;
   InitializationSettings initializationSettings;
 
+
+
   Future<void> _signOut(BuildContext context) async{
     try {
       final auth=Provider.of<AuthBase>(context);
       await auth.signOut();
+      Navigator.of(context).popUntil((route) => route.isFirst);
     }catch(e){
       print(e.toString());
     }

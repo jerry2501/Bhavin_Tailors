@@ -15,6 +15,7 @@ class careouselView extends StatefulWidget {
 
 class _careouselViewState extends State<careouselView> {
   int _current=0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
