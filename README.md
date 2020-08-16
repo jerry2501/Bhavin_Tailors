@@ -1,16 +1,7 @@
 # bhavintailors
 
-A new Flutter application.
+Bhavin Tailors is a catalog App for women Apprels. It is also available on play store. User can see interesting collection of women apparels and can also mark it as favourites.User can direct call the shopowner or can reach to the shop using Google maps. 
 
-## Getting Started
+## Available on Playstore
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<a target="_blank" href='https://play.google.com/store/apps/details?id=com.jerry.bhavintailors'><img alt='Get it on Google Play' src='https://goldtonemusicgroup.com/img/goldtone/main-page/news/playstore-badge.png' height='48px'/></a>
