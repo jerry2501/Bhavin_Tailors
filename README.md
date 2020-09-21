@@ -1,6 +1,6 @@
 # bhavintailors
 
-Bhavin Tailors is a catalog App for women Apprels. It is also available on play store. User can see interesting collection of women apparels and can also mark it as favourites.User can direct call the shopowner or can reach to the shop using Google maps. 
+Bhavin Tailors is a Catalog App for women Apprels. It is also available on play store. User can see interesting collection of women apparels and can also mark it as favourites.User can direct call the shopowner or can reach to the shop using Google maps. 
 
 ## Available on Playstore
 
